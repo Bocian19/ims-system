@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+<table class="my-table">
+    <tr>
+    <th>Lp.</th><th>Imię</th><th>Nazwisko</th><th>Stanowisko</th><th>Data urodzenia</th><th>Ilość dni urlopowych</th>
+    </tr>
+    {% for employee in employees %}
+        {% if loop.index % 2 == 0 %}
+        <tr class="odd">
+            {% else %}
+                <tr class="even">
+                    {% endif %}
+            <td>{{ loop.index }}</td>
+        <td>{{ employee.name }}</td><td>{{ employee.surname }}</td><td>{{ employee.position }}</td><td>{{ employee.birthDate|date("m-d-Y") }}</td><td>{{ employee.vacationDays }}</td>
+        </tr>
+    {% endfor %}
+</table>
+    <label for="picker-odd">Kolumny parzyste</label><input type="color" id="picker-odd" value="#D6EEEE" style="width:5%;" >
+    <label for="picker-even">Kolumny nieparzyste</label><input type="color" id="picker-even" value="#B0413E" style="width:5%;">
+
+{% endblock %}
+

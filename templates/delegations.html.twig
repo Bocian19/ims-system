@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <table>
+    <tr>
+        <th>Lp.</th><th>Imię i nazwisko</th><th>Data od</th><th>Data do</th><th>Miejsce wyjazdu</th><th>Miejsce przyjazdu</th>
+    </tr>
+    {% for delegation in delegations %}
+        <tr>
+        <td>{{ loop.index }}</td>
+        <td>{{ delegation.employee }}</td><td>{{ delegation.startDate|date("m-d-Y") }}</td><td>{{ delegation.finishDate|date("m-d-Y") }}</td><td>{{ delegation.startCity }}</td><td>{{ delegation.endCity }}</td>
+        </tr>
+    {% endfor %}
+    </table>
+{% endblock %}

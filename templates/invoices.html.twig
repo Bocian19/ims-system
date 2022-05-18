@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <table class="invoices">
+        <tr>
+            <th>Lp.</th><th>Opis</th><th>MPK</th><th>Kwota netto</th><th>Ilość</th><th>VAT</th><th>Kwota brutto</th><th>Wartość netto</th><th>Wartość brutto</th>
+        </tr>
+        <tr><td>1</td><td> ...</td><td>Polska</td><td id="net_price">1500</td><td>1</td><td><select name="tax" id="tax">
+                    <option value=0>0%</option>
+                    <option value=3>3%</option>
+                    <option value=8>8%</option>
+                    <option value=23>23%</option>
+                </select></td><td id="with_tax"></td><td id="net_val"></td><td id="with_tax_val"></td></tr>
+        <tr><td>2</td><td> ...</td><td>Polska</td><td id="net_price">41900</td><td>2</td><td><select name="tax" id="tax">
+                    <option value=0>0%</option>
+                    <option value=3>3%</option>
+                    <option value=8>8%</option>
+                    <option value=23>23%</option>
+                </select></td><td id="with_tax"></td><td id="net_val"></td><td id="with_tax_val"></td></tr>
+        <tr><td>3</td><td> ...</td><td>Polska</td><td id="net_price">800</td><td>3</td><td><select name="tax" id="tax">
+                    <option value=0>0%</option>
+                    <option value=3>3%</option>
+                    <option value=8>8%</option>
+                    <option value=23>23%</option>
+                </select></td><td id="with_tax"></td><td id="net_val"></td><td id="with_tax_val"></td></tr>
+        <tr><td>4</td><td> ...</td><td>Francja</td><td id="net_price">7425</td><td>4</td><td><select name="tax" id="tax">
+                    <option value=0>0%</option>
+                    <option value=3>3%</option>
+                    <option value=8>8%</option>
+                    <option value=23>23%</option>
+                </select></td><td id="with_tax"></td><td id="net_val"></td><td id="with_tax_val"></td></tr>
+        <tr><td>5</td><td> ...</td><td>Grecja</td><td id="net_price">191200</td><td>5</td><td><select name="tax" id="tax">
+                    <option value=0>0%</option>
+                    <option value=3>3%</option>
+                    <option value=8>8%</option>
+                    <option value=23>23%</option>
+                </select></td><td id="with_tax"></td><td id="net_val"></td><td id="with_tax_val"></td></tr>
+    </table>
+    <button id="big_value">Powyżej 1000 tyś. zł netto</button>
+
+{% endblock %}

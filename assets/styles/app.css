@@ -1,3 +1,15 @@
 body {
     background-color: lightgray;
 }
+
+table {
+    border-style: double;
+}
+tr.even {
+    background-color: #D6EEEE;
+}
+tr.odd {
+    background-color: #B0413E;
+}
+
+
