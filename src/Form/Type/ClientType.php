@@ -18,7 +18,7 @@ class ClientType extends AbstractType
             ->add('regon', TextType::class)
             ->add('name', TextType::class)
             ->add('is_vat_payer', CheckboxType::class, array(
-                'attr' => array('data' => false,)
+                'required' => false,
             ))
             ->add('street', TextType::class)
             ->add('property_num', TextType::class)
