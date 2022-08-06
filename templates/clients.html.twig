@@ -4,27 +4,29 @@
         <tr>
             <th>NIP</th><th>REGON</th><th>NAZWA</th><th>CZY PŁATNIK VAT</th><th>ULICA</th><th>NR DOMU</th><th>NR MIESZKANIA</th><th></th><th></th>
         </tr>
-        {% for client in clients %}
-            <tr>
-                <td>{{ client.nip }}</td>
-                <td>{{ client.regon }}</td>
-                <td>{{ client.name }}</td>
-                {% if client.isVatPayer == 1 %}
-                <td><input type="checkbox" checked onclick="return false;"></td>
-                {% else %}
-                    <td><input type="checkbox" onclick="return false;"></td>
-                {% endif %}
-                <td>{{ client.street }}</td>
-                <td>{{ client.propertyNum }}</td>
-                    <td>{{ client.flatNum }}</td>
-                <td><form method="get"  action="/client/edit/{{ client.id }}">
-                        <button type="submit" >Edytuj</button>
-                    </form></td>
-                <td><form method="get" action="/client/delete/{{ client.id }}">
-                        <button type="submit">Usuń klienta</button>
-                    </form></td>
-            </tr>
-        {% endfor %}
+        {% if clients %}
+            {% for client in clients %}
+                <tr>
+                    <td>{{ client.nip }}</td>
+                    <td>{{ client.regon }}</td>
+                    <td>{{ client.name }}</td>
+                    {% if client.isVatPayer == 1 %}
+                    <td><input type="checkbox" checked onclick="return false;"></td>
+                    {% else %}
+                        <td><input type="checkbox" onclick="return false;"></td>
+                    {% endif %}
+                    <td>{{ client.street }}</td>
+                    <td>{{ client.propertyNum }}</td>
+                        <td>{{ client.flatNum }}</td>
+                    <td><form method="get"  action="/client/edit/{{ client.id }}">
+                            <button type="submit" >Edytuj</button>
+                        </form></td>
+                    <td><form method="get" action="/client/delete/{{ client.id }}">
+                            <button type="submit">Usuń klienta</button>
+                        </form></td>
+                </tr>
+            {% endfor %}
+        {% endif %}
     </table>
     <form method="get" action="/add-client">
         <button type="submit">Dodatj nowego klienta</button>

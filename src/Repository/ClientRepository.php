@@ -21,7 +21,7 @@ class ClientRepository extends ServiceEntityRepository
         parent::__construct($registry, Client::class);
     }
 
-    public function add(Client $entity, bool $flush = false): void
+    public function add(Client $entity, bool $flush = true): void
     {
         $this->getEntityManager()->persist($entity);
 
@@ -39,20 +39,20 @@ class ClientRepository extends ServiceEntityRepository
         }
     }
 
-//    /**
-//     * @return Client[] Returns an array of Client objects
-//     */
-//    public function findByExampleField($value): array
-//    {
-//        return $this->createQueryBuilder('c')
-//            ->andWhere('c.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('c.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
+   /**
+    * @return Client[] Returns an array of Client objects
+    */
+   public function findNameInOtherProperties($name, $propertyNum): array
+   {
+       return $this->createQueryBuilder('c')
+           ->andWhere('c.name = :name')
+           ->setParameter('name', $name)
+           ->andWhere('c.propertyNum != :num')
+           ->setParameter('num', $propertyNum)
+           ->getQuery()
+           ->getResult()
+       ;
+   }
 
 //    public function findOneBySomeField($value): ?Client
 //    {

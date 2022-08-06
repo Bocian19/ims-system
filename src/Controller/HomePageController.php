@@ -9,6 +9,7 @@ use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use App\Repository\ClientRepository;
 
 class HomePageController extends AbstractController
 {
@@ -69,10 +70,10 @@ class HomePageController extends AbstractController
      * @return Response
      * @Route("/clients", name="clients")
      */
-    public function showClients(ManagerRegistry $doctrine): Response
+    public function showClients(ClientRepository $clientrepository): Response
     {
-        $clients = $doctrine->getRepository(Client::class)->findAll();
-        return $this->render('clients.html.twig', ['clients' => $clients, ]);
+        $clients = $clientrepository->findAll();
+        
+        return $this->render('clients.html.twig', ['clients' => $clients]);
     }
-
 }

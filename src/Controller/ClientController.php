@@ -11,16 +11,18 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use App\Repository\ClientRepository;
 
 class ClientController extends AbstractController
 {
     /**
      * @Route("/client/edit/{id}", methods={"GET"})
      */
-    public function update(ManagerRegistry $doctrine, int $id, Request $request): Response
+    public function update(ClientRepository $clientrepository, int $id, Request $request): Response
     {
-        $entityManager = $doctrine->getManager();
-        $client = $entityManager->getRepository(Client::class)->find($id);
+        // dump($_SERVER); die;
+        
+        $client = $clientrepository->find($id);
 
         if (!$client) {
             throw $this->createNotFoundException(
@@ -37,8 +39,7 @@ class ClientController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
 
             $client = $form->getData();
-            $entityManager->persist($client);
-            $entityManager->flush();
+            $clientrepository->add($client);
 
             return $this->redirectToRoute('clients');
         }

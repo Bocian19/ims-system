@@ -36,7 +36,10 @@ import './bootstrap';
     $("#invoices").click("click", function (e) {
         e.preventDefault();
         $.ajax({
-            url: "/invoices"
+            url: "/invoices",
+            beforeSend: function() {
+                $("#load").removeClass("hidden");
+            },
         }).done(function (data) { // data what is sent back by the php page
             $('#Prawy').html(data); // display data
         });
@@ -79,16 +82,16 @@ import './bootstrap';
                 let with_tax_val = e.currentTarget.parentElement.nextElementSibling.nextElementSibling.nextElementSibling;
                 if (chosen_tax === '0') {
                     with_tax.innerHTML = net_value;
-                    with_tax_val.innerHTML = net_value * quantity;
+                    with_tax_val.innerHTML = (net_value * quantity).toFixed(2);
                 } else if (chosen_tax === '3') {
-                    with_tax.innerHTML = net_value * 1.03;
-                    with_tax_val.innerHTML = net_value * 1.03 * quantity;
+                    with_tax.innerHTML = (net_value * 1.03).toFixed(2);
+                    with_tax_val.innerHTML = (net_value * 1.03 * quantity).toFixed(2);
                 } else if (chosen_tax === '8') {
-                    with_tax.innerHTML = net_value * 1.08;
-                    with_tax_val.innerHTML = net_value * 1.08 * quantity;
+                    with_tax.innerHTML = (net_value * 1.08).toFixed(2);
+                    with_tax_val.innerHTML = (net_value * 1.08 * quantity).toFixed(2);
                 } else {
-                    with_tax.innerHTML = net_value * 1.23;
-                    with_tax_val.innerHTML = net_value * 1.23 * quantity;
+                    with_tax.innerHTML = (net_value * 1.23).toFixed(2);
+                    with_tax_val.innerHTML = (net_value * 1.23 * quantity).toFixed(2);
                 }
             }
         )
